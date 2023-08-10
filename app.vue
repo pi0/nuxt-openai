@@ -2,7 +2,8 @@
 import { useChat } from "ai/vue"
 
 const { messages, input, handleInputChange, handleSubmit } = useChat({
-  headers: { "Content-Type": "application/json" }
+  headers: { "Content-Type": "application/json" },
+
 })
 </script>
 

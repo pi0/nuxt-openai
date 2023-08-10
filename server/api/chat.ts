@@ -1,17 +1,25 @@
-import { type ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai-edge"
-import { OpenAIStream } from "ai"
+import {
+  type ChatCompletionRequestMessage,
+  Configuration,
+  OpenAIApi,
+} from "openai-edge";
+import { OpenAIStream } from "ai";
 
 export default defineLazyEventHandler(async () => {
   // Create an OpenAI API client (that's edge friendly!)
-  const openai = new OpenAIApi(new Configuration({
-     apiKey: useRuntimeConfig().openaiApiKey
-  }))
+  const apiKey = useRuntimeConfig().openaiApiKey;
+  if (!apiKey) throw new Error("Missing OpenAI API key");
+  const openai = new OpenAIApi(
+    new Configuration({
+      apiKey,
+    })
+  );
 
   return defineEventHandler(async (event) => {
     // Extract the `prompt` from the body of the request
     const { messages } = (await readBody(event)) as {
-      messages: ChatCompletionRequestMessage[]
-    }
+      messages: ChatCompletionRequestMessage[];
+    };
 
     // Ask OpenAI for a streaming chat completion given the prompt
     const response = await openai.createChatCompletion({
@@ -19,11 +27,11 @@ export default defineLazyEventHandler(async () => {
       stream: true,
       messages: messages.map((message) => ({
         content: message.content,
-        role: message.role
-      }))
-    })
+        role: message.role,
+      })),
+    });
 
     // Convert the response into a friendly text-stream
-    return OpenAIStream(response)
-  })
-})
+    return OpenAIStream(response);
+  });
+});
