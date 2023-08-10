@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   nitro: { preset: "vercel-edge", minify: false },
   devtools: { enabled: true },
   runtimeConfig: {
+    // Set using NUXT_OPENAI_API_KEY environment variable
     openaiApiKey: ""
   }
 })

@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "nuxt-openai-vercel-edge-demo",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -11,15 +11,14 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@types/node": "^18.17.1",
+    "@types/node": "latest",
     "ai": "^2.1.32",
-    "h3": "1.8.0-rc.2",
-    "nitropack": "2.5.2",
-    "nuxt": "^3.6.5",
+    "nuxt": "latest",
     "openai-edge": "^1.2.2"
   },
   "resolutions": {
-    "h3": "1.8.0-rc.2",
-    "nitropack": "2.5.2"
+    "h3": "npm:h3-nightly@latest",
+    "nuxt": "npm:nuxt3@latest",
+    "nitropack": "npm:nitropack-edge@latest"
   }
 }
