@@ -5,15 +5,18 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "latest",
-    "ai": "^2.1.32",
+    "ai": "^2.2.7",
     "nuxt": "^3.6.5",
-    "openai-edge": "^1.2.2"
+    "openai": "^4.0.1"
+  },
+  "resolutions": {
+    "nitropack": "npm:nitropack-edge"
   }
 }
